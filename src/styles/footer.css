@@ -1,0 +1,26 @@
+footer{
+    background-color: black;
+    color: white;
+    padding: 50px;
+}
+footer .Logo{
+    font-size: 2rem;
+}
+.footer{
+    display: flex;
+    margin-top: 100px;
+    gap: 30%;
+}
+.footer ul{
+    list-style: none;
+}
+.footer svg{
+    margin-left: 6px;
+    transform: scale(1.2);
+}
+@media screen and (max-width:1018px){
+    .footer{
+        display: block;
+        text-align: center;
+    }
+}

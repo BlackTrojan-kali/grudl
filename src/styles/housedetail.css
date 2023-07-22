@@ -1,0 +1,53 @@
+.house-details{
+    margin: 100px 30px;
+}
+.home-illustration{
+    display: flex;
+    gap: 30px;
+}
+.home-single-image img{
+    width: 500px;
+}
+.home-desc h1{
+    font-family: Dancing Script;
+    color: rgb(16, 103, 141);
+}
+.home-desc h4{
+    margin: 5px;
+    font-size: 1.5rem;
+    color: rgb(16, 103, 141);
+}
+.home-desc span{
+    margin-left: 30px;
+    font-size: 1.2rem;
+}
+.catalogue{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.element img{
+    width: 300px;
+    height: 300px;
+}
+.aprouve{
+    background-color: rgb(118, 163, 183);
+    color: rgb(16, 103, 141);
+    padding: 5px;
+}
+.attente{
+    background-color: rgb(230, 169, 178);
+    color: rgb(141, 16, 31);
+    padding: 5px;
+}
+@media screen and (max-width:800px) {
+
+    .home-illustration{
+        display: block;
+    }
+
+.catalogue{
+    margin-top: 10px;
+    display: block;
+}
+}

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Ceviche+One&family=Dancing+Script&family=Kablammo&family=Lato&family=Lobster&family=Roboto&display=swap');
+.Home{
+  overflow-x: hidden;
+}
+.Home h2{
+    color:rgba(192, 128, 10, 0.904);
+    font-family:Lobster;
+    text-align:center;
+    font-size: 2rem;
+}
+.dataList{
+    display: grid;
+    gap: 30px;
+    grid-template-columns: auto auto auto;
+}
+.boxData{
+    overflow: hidden;
+    width: 350px;
+    height: 520px;
+    border-radius: 12px;
+    transition:all 0.30s linear
+}
+.boxData img{
+    width: 100%;
+    height: 55%;
+    border-radius: 12px;
+}
+.boxData h3, .boxData h4{
+  margin: 5px;
+}
+.boxData p{
+  color: gray;
+}
+.seemore{
+    width: 70px;
+    color: rgb(2, 92, 195);
+    font-family: Lobster;
+    background-color: white;
+    border: 2px solid rgb(2, 92, 195);
+    border-radius: 50px;
+    transition: all 0.25s ease-out;
+    padding:10px;
+}
+.seemore:hover{
+  background-color: rgb(2, 92, 195);
+  color: white;
+}
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 100px;
+  }
+  
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px!important;
+    height: 300px!important;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .main{
+    width: 100%;
+    margin: 50px;
+  }
+  .categories{
+    display:flex;
+    width: 100%;
+    gap: 100px;
+    text-align: center;
+    height: 60px;
+    padding: 10px;
+    border-bottom: 2px solid rgb(225, 223, 223);
+    border-top: 2px solid rgb(225, 223, 223);
+  }
+  .category{
+    color: gray;
+    transition:all 0.25s ease-out;
+  }
+  .category h4{
+    margin: 5px;
+  }
+  .category:hover{
+    color: black;
+    transition: all 0.25s ease-out;
+    cursor: pointer;
+    border-bottom: 1px solid black;
+  }
+  .category svg{
+    font-size: 1.4rem;
+
+  }
+  .boxData:hover{
+    cursor: pointer;
+    transform: translateY(5px);
+    transition:all 0.30s linear;
+
+  }
+  .like{
+    font-size: 1rem;
+    margin-left: 15%;
+  }
+  
+  .productdesc .like{
+    margin-left: 0;
+  }
+  @media screen and (max-width:800px) {
+    .dataList{
+      display: block;
+    }
+    .boxData{
+      overflow: hidden;
+      width: 280px;
+      height: 520px;
+      border-radius: 12px;
+      transition:all 0.30s linear
+  }
+  
+  }

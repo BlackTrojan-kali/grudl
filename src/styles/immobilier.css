@@ -1,0 +1,46 @@
+.houses{
+    position: relative;
+    margin: 100px 30px 10px 30px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10%;
+}
+
+  .house  .swiper {
+       width: 300px;
+       border-radius: 12px;
+       overflow: hidden !important;
+      }
+      
+      .house  .swiper-slide  img{
+        overflow: hidden;
+       border-radius: 20px !important;
+        width: 320px !important;
+        height: 100% !important;
+      }
+      .houseBox{
+        width: 320px;
+      }
+.heading{
+    display: flex;
+    gap: 20%;
+}
+.heading h2{
+    font-family: 'Dancing Script';
+    color: rgb(18, 134, 180);
+}
+.heading span{
+    padding-top: 20px;
+}
+.houseDesc{
+    padding: 5px;
+}
+
+@media screen and (max-width:800px) {
+
+  .houses{
+    position: relative;
+    margin: 100px 30px 10px 30px;
+    display: block;
+}  
+}

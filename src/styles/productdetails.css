@@ -1,0 +1,63 @@
+ .product-detail{
+    margin-top: 100px;
+}
+
+.illustrate{
+    display: flex;
+    padding: 20px;
+    margin: 20px;
+    gap: 20px;
+}
+.instock{
+  color: green;
+  background-color: rgb(169, 231, 169);
+  padding: 5px;
+  border-radius: 3px ;
+}
+.outofstock{
+  color: red;
+  background-color: rgb(231, 169, 169);
+  padding: 5px;
+  border-radius: 3px ;
+}
+.illustrate .oldprice, .newprice{
+  font-family: Lobster;
+  font-size: 1.3rem;
+  margin: 10px;
+}
+.oldprice{
+  text-decoration: line-through;
+  color: red;
+}
+.desc-prod{
+  text-align: justify;
+}
+.addtocart{
+  margin-top: 40px;
+  border: none;
+  background-color: rgb(4, 133, 4);
+  color:#fff;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.IM img{
+  width: 400px;
+}
+
+
+ .illustrate .swiper {
+  width: 100%;
+  height: 300px;
+  margin: 20px auto;
+}
+@media screen and (max-width: 800px) {
+  .illustrate{
+    display: block;
+  }
+
+.IM img{
+  width: 300px;
+}
+  
+}

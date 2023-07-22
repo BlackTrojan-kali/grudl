@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Ceviche+One&family=Kablammo&family=Lato&family=Lobster&family=Roboto&display=swap');
+
+
+.header{
+    width: 100%;
+    background-color: rgb(1, 13, 29);
+    position: fixed;
+    z-index: 999;
+    top:0;
+    color:white;
+    display: flex;
+    padding: 10px;
+    height: 67px;
+    overflow: hidden;
+}
+.Logo{
+    font-family: Lobster;
+    margin: 5px;
+    color: rgb(19, 142, 163);
+}
+.navbar{
+    padding: 20px;
+    margin-left: 20%;
+}
+.navbar a{
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    transition: all 0.25s linear;
+}
+.navbar a:hover{
+    color:rgb(19, 142, 163);
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(19, 142, 163);
+    transition: all 0.25s linear;
+}
+.icons{
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+}
+.header svg{
+    transform: scale(1.8);
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.indice{
+    background-color: rgb(179, 120, 11);
+    border-radius: 100px;
+    padding: 10px;
+    height: 10px;
+    text-align: center;
+    margin-left: 10px;
+}
+.close{
+    display:none;
+
+}
+@media screen and (max-width:1052px){
+    .navbar{
+        z-index: 999;
+        display: block;
+        position: fixed;
+        height: 100vh;
+        margin-top: 80px;
+        gap: 30px;
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        background-color: rgba(179, 120, 11, 0.301);
+        transition: all 0.3s ease-out;
+        transform: translateX(-150%);
+    }
+    .icons{
+        display: flex;}
+    .close{
+        display: flex;
+    }
+    .navbar-responsive{
+        z-index: 999;
+        transition: all 0.5s ease-out;
+        transform: translateX(-1.5%);
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        position: fixed;
+        height: 100vh;
+        margin-top: 77px;
+        width: 100vw;
+        background-color: rgba(179, 120, 11, 0.801);
+    }
+    .navbar-responsive a{
+        font-size: 1.3rem;
+        color: white;
+        text-decoration: none;
+        padding: 20px;
+    }
+
+}
