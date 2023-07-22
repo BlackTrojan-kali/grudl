@@ -44,12 +44,18 @@
 .IM img{
   width: 400px;
 }
-
+.alike{
+  text-align: center;
+}
 
  .illustrate .swiper {
   width: 100%;
   height: 300px;
   margin: 20px auto;
+}
+.boxDataAlike img{
+  width: 250px;
+  height: 150px;
 }
 @media screen and (max-width: 800px) {
   .illustrate{

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import '../styles/homepage.css'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from 'react-router-dom';
@@ -16,6 +16,7 @@ import {IoLogoElectron} from 'react-icons/io5'
 import {SiRepublicofgamers} from 'react-icons/si'
 import {CgSmartphoneChip} from 'react-icons/cg'
 import {SiJirasoftware} from 'react-icons/si'
+import TheFilter from '../components/TheFilter';
 const PRODUCTS = gql`
 query GetProducts{
   products{
@@ -43,54 +44,15 @@ query GetProducts{
 const HomePages = ({cart,addToCart}) => {
   const { data, error, loading }= useQuery(PRODUCTS);
   {console.log(data)}
+  
+
   if(loading)return <p>fetching data please wait... </p>
   if(error)  return <p className='Home'>error while fetching your data check if the data server is opened</p>
   return (
     <div className='Home'>
 
-<div className="categories">
-          <div className="category">
-          <RiTShirt2Line/>
-          <h4>T-shirts</h4>
-          </div>
+  <TheFilter/>
 
-          <div className="category">
-          <GiUnderwearShorts/>
-          <h4>shirts</h4>
-          </div>
-
-          <div className="category">
-          <SiRepublicofgamers/>
-          <h4>Jeux</h4>
-          </div>
-
-          <div className="category">
-          <MdSportsRugby/>
-          <h4>sport</h4>
-          </div>
-
-          <div className="category">
-          <CgSmartphoneChip/>
-          <h4>Composant</h4>
-          </div>
-
-          <div className="category">
-          <GiWhiteBook/>
-          <h4>Livre</h4>
-          </div>
-          
-          
-          <div className="category">
-          <IoLogoElectron/>
-          <h4>Electronique</h4>
-          </div>
-
-          <div className="category">
-          <SiJirasoftware/>
-          <h4>Logiciels</h4>
-          </div>
-
-</div>
      {console.log(data)}
       <h2>Bienvenu sur <span> Grudl</span></h2>
       <Swiper

@@ -12,6 +12,7 @@ import Cart from './components/Cart';
 import { ApolloClient,InMemoryCache,ApolloProvider } from '@apollo/client';
 import Immobilier from './pages/Immobilier';
 import HouseDetail from './pages/HouseDetail';
+import HouseFiltered from './pages/HouseFiltered';
 
 const client = new ApolloClient({
   uri: 'http://localhost:1337/graphql',
@@ -49,8 +50,10 @@ function App() {
         <Routes>
           <Route exact path='/' element={<HomePages cart={cart} addToCart={addToCart}/>}/>
           <Route path='/ProductDetails/:id' element={<ProductDetails cart={cart} addToCart={addToCart}/>}/>
+          <Route path='/Category/:id' element={<Category cart={cart} addToCart={addToCart}/>}/>
           <Route path='/HouseDetail/:id' element={<HouseDetail cart={cart} />}/>
           <Route path='/Immobilier' element={<Immobilier cart={cart} />}/>
+          <Route path='/HouseFiltered/:id' element={<HouseFiltered cart={cart} addToCart={addToCart}/>}/>
         </Routes>
         <Footer></Footer>
     </div>

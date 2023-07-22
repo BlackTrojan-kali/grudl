@@ -12,6 +12,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 // import required modules
 import { Zoom, Navigation, Pagination } from 'swiper';
+import FilterHouse from '../components/FilterHouse';
 
 const HOUSES= gql`
 query GetHouses{
@@ -43,8 +44,10 @@ const Immobilier = () => {
     if(error)  return <p className='Home'>error while fetching your data check if the data server is opened</p>
     
   return (
+    <div className='immo'>
+           <FilterHouse/>
+ 
     <div className='houses'>
-
             {
                 data.houses.data.map(house=>(
                     <div className="houseBox" key={house.id}>
@@ -83,6 +86,7 @@ const Immobilier = () => {
                     </div>
                 ))
             }
+    </div>
     </div>
   )
 }

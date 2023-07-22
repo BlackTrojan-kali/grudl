@@ -13,6 +13,7 @@ import "swiper/css/effect-cards";
 import { Pagination, Navigation } from "swiper";
 import { useQuery,gql } from '@apollo/client';
 import { EffectCards } from "swiper";
+import Alike from '../components/Alike';
 
 const PRODUCT = gql`
     query GetProduct($id:ID!){
@@ -26,6 +27,14 @@ const PRODUCT = gql`
               description
               in_stock
               price
+              categories{
+                data{
+                  id
+                  attributes{
+                    name
+                  }
+                }
+              }
               images{
                 data{
                   attributes{
@@ -40,13 +49,16 @@ const PRODUCT = gql`
 `
 const ProductDetails = ({cart,addToCart}) => {
   const {id} = useParams()
+
   const {loading,error,data}= useQuery(PRODUCT,{variables:{id:id}})
+
   if(loading) return <p> <br /> <br /> <br /> loading....</p>
   if(error) return <p> <br /> <br /> <br />error</p>
     console.log({data})
     const prod = data.product.data.attributes
-   
     const prode = data.product.data
+    const alike = data.product.data.attributes.categories.data[0].id  
+    console.log(alike)
   return (
     <div className='product-detail'>
       <div className="illustrate">
@@ -74,6 +86,9 @@ const ProductDetails = ({cart,addToCart}) => {
          <button className='addtocart' onClick={()=>addToCart(prode)}>Ajouter Au Panier <BsCart4/> </button>
         </div>
       </div>
+      {console.log(alike)}
+      <Alike alike={alike}/>
+      
       </div>
   )
 }

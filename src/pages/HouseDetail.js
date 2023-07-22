@@ -15,6 +15,7 @@ query GetHouse($id:ID!){
         owner
         ownerMail
         owner_contact
+        status
         images{
           data{
             attributes{
@@ -47,6 +48,7 @@ const HouseDetail = () => {
           <h3>{home.notation} <AiTwotoneHeart/></h3>
           <p>{home.description}</p>
           <h3>{home.price} fcfa</h3>
+          {console.log(home.status)}
           {home.status ? <h3 className='aprouve'>Aprouve</h3>:<h2 className='attente'>En attente</h2>}
           <p>
             <h4>owner</h4>
