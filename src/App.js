@@ -13,6 +13,9 @@ import { ApolloClient,InMemoryCache,ApolloProvider } from '@apollo/client';
 import Immobilier from './pages/Immobilier';
 import HouseDetail from './pages/HouseDetail';
 import HouseFiltered from './pages/HouseFiltered';
+import Signup from './pages/Signup';
+import SignIn from './pages/SignIn';
+import Profile from './components/profile';
 
 const client = new ApolloClient({
   uri: 'http://localhost:1337/graphql',
@@ -54,6 +57,9 @@ function App() {
           <Route path='/HouseDetail/:id' element={<HouseDetail cart={cart} />}/>
           <Route path='/Immobilier' element={<Immobilier cart={cart} />}/>
           <Route path='/HouseFiltered/:id' element={<HouseFiltered cart={cart} addToCart={addToCart}/>}/>
+          <Route path='/Signup' element={<Signup cart={cart} />}/>
+          <Route path='/SignIn' element={<SignIn cart={cart} />}/>
+          <Route path='/Profile' element={<Profile cart={cart} />}/>
         </Routes>
         <Footer></Footer>
     </div>
