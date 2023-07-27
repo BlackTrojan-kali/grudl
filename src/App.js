@@ -16,7 +16,8 @@ import HouseFiltered from './pages/HouseFiltered';
 import Signup from './pages/Signup';
 import SignIn from './pages/SignIn';
 import Profile from './components/profile';
-
+import {message} from "antd"
+import Billeterie from './pages/Billeterie';
 const client = new ApolloClient({
   uri: 'http://localhost:1337/graphql',
   cache: new InMemoryCache()
@@ -33,12 +34,13 @@ function App() {
   }
   const addToCart= (data)=>{
     if(cart.includes(data)){
-      alert('le panier contient deja cet element');
+      message.error('le panier contient deja cet element');
     }else if(data.attributes.in_stock == false){
-      alert('le stock est epuise');
+      message.error('le stock est epuise');
     }else{
 
     setCart(cart=>[...cart,data])
+    message.success('element ajoute avec success')
     }
   }
   
@@ -60,6 +62,7 @@ function App() {
           <Route path='/Signup' element={<Signup cart={cart} />}/>
           <Route path='/SignIn' element={<SignIn cart={cart} />}/>
           <Route path='/Profile' element={<Profile cart={cart} />}/>
+          <Route path='/Billeterie' element={<Billeterie cart={cart} />}/>
         </Routes>
         <Footer></Footer>
     </div>

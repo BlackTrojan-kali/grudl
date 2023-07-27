@@ -14,11 +14,13 @@ export default function Header({cart,handleShow}) {
   const handleClose = ()=>{
     setClose(!close);
   }
+const [signed,setSigned] = useState(false);
 
-  const { user } = useAuthContext();
+  const { user,setUser } = useAuthContext();
   const navigate = useNavigate();
   const handleLogout = () => {
     removeToken();
+    setUser(null)
     navigate("/signin", { replace: true });
   };
 
@@ -28,11 +30,13 @@ export default function Header({cart,handleShow}) {
       <nav className={close? "navbar":"navbar-responsive"}>
           <Link to='/'>Boutiques</Link>
           <Link to='/Immobilier'>Immobilier</Link>
-          <Link>Billeterie</Link>
-
+          {user?
+          <Link to="/Billeterie">Billeterie</Link>:
+          <Link to="/SignIn">Billeterie</Link>
+          }
       </nav>
       <div className="icons">
-        
+          {console.log(user)}
       <Space className="auth_buttons">
             {user ? (
               <>

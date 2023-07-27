@@ -13,6 +13,7 @@ import 'swiper/css/pagination';
 // import required modules
 import { Zoom, Navigation, Pagination } from 'swiper';
 import FilterHouse from '../components/FilterHouse';
+import { useAuthContext } from '../context/authContex';
 
 const HOUSES= gql`
 query GetHouses{
@@ -38,6 +39,7 @@ query GetHouses{
   }
 `
 const Immobilier = () => {
+  const user = useAuthContext();
     const { data, error, loading }= useQuery(HOUSES);
     {console.log(data)}
     if(loading)return <p>fetching data please wait... </p>
@@ -46,7 +48,7 @@ const Immobilier = () => {
   return (
     <div className='immo'>
            <FilterHouse/>
- 
+       {user.user? <button className='addHome'>Ajouter une Maison</button>:"try login"}
     <div className='houses'>
             {
                 data.houses.data.map(house=>(
