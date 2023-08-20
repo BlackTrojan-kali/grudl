@@ -61,6 +61,13 @@ body{
 .row svg{
     color: rgb(122, 3, 3);
 }
+.ps-sidebar-root{
+    background-color: black;
+}
+.ps-sidebar-root h1{
+    font-family: Lobster;
+    color: rgb(0, 179, 255);
+}
 @media screen and (max-width: 486px) {
     .cartoff{
         position: fixed;

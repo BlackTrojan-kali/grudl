@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
 import { Routes,BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -19,6 +20,7 @@ import Profile from './components/profile';
 import {message} from "antd"
 import Billeterie from './pages/Billeterie';
 import Reserver from './pages/Reserver';
+import Side from './components/Side';
 const client = new ApolloClient({
   uri: 'http://localhost:1337/graphql',
   cache: new InMemoryCache()
@@ -82,14 +84,17 @@ function App() {
   }
   
   console.log(cart)
- 
+  const { collapseSidebar } = useProSidebar();
   return (
 
     <ApolloProvider client={client}>
+      
   <BrowserRouter >
     <div className="App">
         <Header cart={cart} handleShow={handleShow}/>
         <Cart cart={cart} cartOn={cartOn} Addqty={Addqty} Lessqty={Lessqty}  removeFromCart={removeFromCart} />
+        <div id="app" style={({ height: "100vh" }, { display: "flex" })}>
+      <Side collapseSidebar={collapseSidebar}/>
         <Routes>
           <Route exact path='/' element={<HomePages cart={cart} qty={qty} addToCart={addToCart}/>}/>
           <Route path='/ProductDetails/:id' element={<ProductDetails qty={qty} Addqty={Addqty} Lessqty={Lessqty} cart={cart} addToCart={addToCart}/>}/>
@@ -103,9 +108,11 @@ function App() {
           <Route path='/Billeterie' element={<Billeterie cart={cart} />}/>
           <Route path='/Reserver/:id' element={<Reserver cart={cart} />}/>
         </Routes>
+        </div>
         <Footer></Footer>
     </div>
     </BrowserRouter>
+  
     </ApolloProvider>
   );
 }

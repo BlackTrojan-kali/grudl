@@ -53,7 +53,7 @@ const HomePages = ({cart,addToCart,qty}) => {
     <div className='Home'>
   <TheFilter/>
 
-  <Side/>
+
      {console.log(data)}
       <h2>Bienvenu sur <span> Grudl</span></h2>
       <Swiper
