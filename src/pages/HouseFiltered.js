@@ -11,13 +11,17 @@ import 'swiper/css/zoom';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 // import required modules
+import { useParams } from 'react-router-dom';
 import { Zoom, Navigation, Pagination } from 'swiper';
 import FilterHouse from '../components/FilterHouse';
-import { useAuthContext } from '../context/authContex';
-
-const HOUSES= gql`
-query GetHouses{
-    houses{
+const HOUSE_CATEGORY = gql`
+query GetHouseCategory($id:ID!){
+    houseCategory(id:$id){
+      data{
+        id
+        attributes{
+           name
+              houses{
       data{
         id
         attributes{
@@ -36,22 +40,27 @@ query GetHouses{
        
       }
     }
-  }
-`
-const Immobilier = () => {
-  const user = useAuthContext();
-    const { data, error, loading }= useQuery(HOUSES);
-    {console.log(data)}
-    if(loading)return <p>fetching data please wait... </p>
+        }
+      }
+    }
+}`
+const HouseFiltered = () => {
+    const {id} = useParams();
+    const{loading,error,data} = useQuery(HOUSE_CATEGORY,{variables:{id:id}})
+
+   
+    if(loading) return <p>fetching data please wait... </p>
     if(error)  return <p className='Home'>error while fetching your data check if the data server is opened</p>
-    
+   
+
+    const houses = data.houseCategory.data.attributes.houses
+    console.log(houses)
   return (
     <div className='immo'>
-           <FilterHouse/>
-       {user.user? <button className='addHome'>Ajouter une Maison</button>:""}
+
     <div className='houses'>
-            {
-                data.houses.data.map(house=>(
+    {
+                houses.data.map(house=>(
                     <div className="houseBox" key={house.id}>
                  <Swiper
         style={{
@@ -89,8 +98,9 @@ const Immobilier = () => {
                 ))
             }
     </div>
+            
     </div>
   )
 }
 
-export default Immobilier
+export default HouseFiltered

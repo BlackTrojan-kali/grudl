@@ -1,6 +1,10 @@
  .product-detail{
     margin-top: 100px;
 }
+.qty{
+  display: flex;
+  margin-top: 10px;
+}
 
 .illustrate{
     display: flex;
@@ -35,11 +39,11 @@
 .addtocart{
   margin-top: 40px;
   border: none;
-  background-color: rgb(4, 133, 4);
+  background-color: rgb(77, 154, 77);
   color:#fff;
   padding: 10px;
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 25%;
 }
 .IM img{
   width: 400px;
@@ -53,10 +57,25 @@
   height: 300px;
   margin: 20px auto;
 }
-.boxDataAlike img{
-  width: 250px;
+.boxDataAlike {
+  width: 200px;
   height: 150px;
 }
+.sizesList{
+  display: flex;
+  gap: 20px;
+}
+.purchase{
+  width: 200px;
+  background-color: red;
+  padding: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+
+} 
 @media screen and (max-width: 800px) {
   .illustrate{
     display: block;

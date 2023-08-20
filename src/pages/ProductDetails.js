@@ -23,6 +23,22 @@ const PRODUCT = gql`
             attributes{
               notation
               title
+              colors{
+                data{
+                  attributes{
+                    color
+                  }
+                }
+              }
+              sizes{
+                data{
+                  id
+                  attributes{
+                    Size
+                  }
+                }
+              }
+              qty
               promotion
               description
               in_stock
@@ -47,15 +63,24 @@ const PRODUCT = gql`
         }
     }
 `
-const ProductDetails = ({cart,addToCart}) => {
+const ProductDetails = ({cart,addToCart,qty,Addqty,Lessqty}) => {
   const {id} = useParams()
-
+const [size,setSize]= useState();
+const [color,setColor]= useState()
   const {loading,error,data}= useQuery(PRODUCT,{variables:{id:id}})
 
   if(loading) return <p> <br /> <br /> <br /> loading....</p>
   if(error) return <p> <br /> <br /> <br />error</p>
     console.log({data})
     const prod = data.product.data.attributes
+    const sizes = prod.sizes.data
+    const colors = prod.colors.data
+    const handleSize =(e)=>{
+      setSize(e)
+    }
+    const handleColor = (e)=>{
+      setColor(e)
+    }
     const prode = data.product.data
     const alike = data.product.data.attributes.categories.data[0].id  
     console.log(alike)
@@ -82,8 +107,40 @@ const ProductDetails = ({cart,addToCart}) => {
           </div>:
           <span className='newprice'>{prod.price} fcfa</span>
                     }</h3>
+          <div className="sizes">
+          <h4>Sizes</h4>
+            {sizes.length==0? "no size":
+            <div className="sizesList">
               
-         <button className='addtocart' onClick={()=>addToCart(prode)}>Ajouter Au Panier <BsCart4/> </button>
+              {sizes.map(size=>(
+                <div className="sizesList" key={size.id}>
+                  <><input type="radio" onChange={()=>handleSize(size.attributes.Size)} name='size'/>{size.attributes.Size}</>
+                </div>
+              ))}
+            </div>
+              }
+          </div>
+          <div className="sizes">
+          <h4>colors</h4>
+            {colors.length==0? "default color":
+            <div className="sizesList">
+              
+              {colors.map(color=>(
+                <div className="colorList" key={color.id}>
+                  <><input type="radio" onChange={()=>handleColor(color.attributes.color)} name='color'/><span style={{
+                    backgroundColor:color.attributes.color,
+                    width:100,
+                    color:'white',
+                    borderRadius:12,
+                    padding:5
+                  }}>{color.attributes.color}</span></>
+                </div>
+              ))}
+            </div>
+              }
+          </div>
+              
+         <button className='addtocart' onClick={()=>addToCart(prode,qty,size,color)}>Ajouter Au Panier <BsCart4/> </button>
         </div>
       </div>
       {console.log(alike)}

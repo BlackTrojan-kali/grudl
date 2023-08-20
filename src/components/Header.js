@@ -36,7 +36,6 @@ const [signed,setSigned] = useState(false);
           }
       </nav>
       <div className="icons">
-          {console.log(user)}
       <Space className="auth_buttons">
             {user ? (
               <>

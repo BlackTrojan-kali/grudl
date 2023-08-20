@@ -2,6 +2,7 @@ import { gql,useQuery } from '@apollo/client'
 import '../styles/housedetail.css'
 import {AiTwotoneHeart} from 'react-icons/ai'
 import { useParams } from 'react-router-dom'
+import HouseImg from '../components/HouseImg'
 const HOUSE = gql`
 query GetHouse($id:ID!){
   house(id:$id){
@@ -60,6 +61,7 @@ const HouseDetail = () => {
       </div>
     
       <h2>illustration</h2>
+      <HouseImg Himg={home.images.data}/>
       <div className="catalogue">
         {
             home.images.data.map(image=>(

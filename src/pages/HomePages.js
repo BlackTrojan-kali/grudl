@@ -17,9 +17,10 @@ import {SiRepublicofgamers} from 'react-icons/si'
 import {CgSmartphoneChip} from 'react-icons/cg'
 import {SiJirasoftware} from 'react-icons/si'
 import TheFilter from '../components/TheFilter';
+import Side from '../components/Side';
 const PRODUCTS = gql`
 query GetProducts{
-  products{
+  products(sort:"description"){
     data{
       id
       attributes{
@@ -41,7 +42,7 @@ query GetProducts{
   }
 }
 `
-const HomePages = ({cart,addToCart}) => {
+const HomePages = ({cart,addToCart,qty}) => {
   const { data, error, loading }= useQuery(PRODUCTS);
   {console.log(data)}
   
@@ -50,9 +51,9 @@ const HomePages = ({cart,addToCart}) => {
   if(error)  return <p className='Home'>error while fetching your data check if the data server is opened</p>
   return (
     <div className='Home'>
-
   <TheFilter/>
 
+  <Side/>
      {console.log(data)}
       <h2>Bienvenu sur <span> Grudl</span></h2>
       <Swiper
@@ -71,9 +72,12 @@ const HomePages = ({cart,addToCart}) => {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        {data.products.data.map(slide=>(
+        {data.products.data.slice(0, 7).map(slide=>(
         <SwiperSlide key={slide.id}>
+
+      <Link to={`/ProductDetails/${slide.id}`}>
             <img src={"http://localhost:1337"+slide.attributes.images.data[0].attributes.url} alt="" />
+      </Link>
         </SwiperSlide>
         ))}
       </Swiper>
@@ -88,7 +92,7 @@ const HomePages = ({cart,addToCart}) => {
               <p>{prod.attributes.description.slice(0,35)}...</p>
               <h4>{prod.attributes.price} XAF</h4>
              <Link to={`/ProductDetails/${prod.id}`}> <button className='seemore'>Voir</button></Link>
-              <button className='addtocart' onClick={()=>addToCart(prod)}>Ajouter au Panier <BsCart4/></button>
+              <button className='addtocart' onClick={()=>addToCart(prod,qty)}>Ajouter au Panier <BsCart4/></button>
             </div>
           </div>
         </div>
