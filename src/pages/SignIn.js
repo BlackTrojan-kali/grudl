@@ -65,7 +65,8 @@ import { setToken } from "../hooks/helper";
     return (
         <div className="signup">
 
-        <h1>Grudl</h1>
+        
+<img style={{width:80,padding:10}} src="logo grudl.png" alt="" />
       <Fragment>
         <Row align="middle">
           <Col>

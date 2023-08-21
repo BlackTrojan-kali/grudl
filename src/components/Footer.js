@@ -15,7 +15,7 @@ export default function Footer() {
       </div>
       <div className="logo">
         <h1 className="Logo">
-          Grudl
+         <img style={{width:100}} src="logo grudl.png" alt="" />
         </h1>
         <div className="socials">
         <FaFacebookF/> 

@@ -5,7 +5,7 @@
     width: 100%;
     background-color: rgb(1, 13, 29);
     position: fixed;
-    z-index: 999;
+    z-index: 1500;
     top:0;
     color:white;
     display: flex;
@@ -13,10 +13,17 @@
     height: 67px;
     overflow: hidden;
 }
+aside{
+  position: fixed !important;
+    z-index: 999;
+}
 .Logo{
     font-family: Lobster;
     margin: 5px;
     color: rgb(19, 142, 163);
+}
+.Logo img{
+    width: 60px;
 }
 .navbar{
     padding: 20px;

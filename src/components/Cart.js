@@ -37,7 +37,7 @@ const Cart = ({cart,cartOn,removeFromCart,Addqty,Lessqty}) => {
                 }
 
 <div className="total">
-                                <h1>Total :{cart.reduce((total,item)=>total +(item.prod.attributes.price*item.qty),0)}</h1>
+                                <h1>Total :{cart.reduce((total,item)=>total +(item.prod.attributes.price*item.qty),0)} Fcfa</h1>
                             <button className='purchase'>Acheter</button>
                             </div></>
             </div>

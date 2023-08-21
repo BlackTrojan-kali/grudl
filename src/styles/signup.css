@@ -2,8 +2,9 @@
 .signup{
     margin-top:40px;
     padding: 100px;
-    background-color: rgb(2, 17, 34);
+    background-image: url('/public/grudl\ bg.jpg');
     height: 100%;
+    background-position: center;
     width: 100%;
 }
 .signup h1{

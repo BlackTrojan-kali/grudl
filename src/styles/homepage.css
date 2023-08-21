@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ceviche+One&family=Dancing+Script&family=Kablammo&family=Lato&family=Lobster&family=Roboto&display=swap');
 .Home{
   overflow-x: hidden;
+  margin-left: 5%;
 }
 .Home h2{
     color:rgba(192, 128, 10, 0.904);

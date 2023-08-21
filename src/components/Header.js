@@ -26,7 +26,7 @@ const [signed,setSigned] = useState(false);
 
   return (
     <div className="header">
-      <h1 className='Logo'>Grudl !</h1>
+      <div className='Logo'><img src="logo grudl.png" alt="" /></div>
       <nav className={close? "navbar":"navbar-responsive"}>
           <Link to='/'>Boutiques</Link>
           <Link to='/Immobilier'>Immobilier</Link>

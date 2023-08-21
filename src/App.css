@@ -15,6 +15,7 @@ body{
     height: 85vh;
     background-color: rgb(255, 255, 255);
     z-index: 999;
+    padding: 10px;
     transition: all 0.25s linear;
     right: 0;
     border: 1px solid black;
@@ -25,6 +26,7 @@ body{
     position: fixed;
     top: 85px;
     right: 0;
+    padding: 10px;
     width: 500px;
     height: 100vh;
     background-color: rgb(255, 255, 255);
@@ -36,9 +38,15 @@ body{
  .cart-header h1{
     padding: 10px;
     margin-top: 0;
-    background-color: rgb(80, 148, 80);
+    background-color:rgb(21, 96, 143);
     text-align: center;
     color: white;
+}
+.cart-element{
+    width: 70%;
+}
+.cart-elem-desc{
+    width: 70%;
 }
 .cart-header h1{
     font-size: 1.5rem;
@@ -62,7 +70,7 @@ body{
     color: rgb(122, 3, 3);
 }
 .ps-sidebar-root{
-    background-color: black;
+    background-color: rgb(18, 90, 166);
 }
 .ps-sidebar-root h1{
     font-family: Lobster;
