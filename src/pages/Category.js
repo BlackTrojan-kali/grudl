@@ -56,6 +56,8 @@ const Category = ({cart,addToCart}) => {
   return (
     <div className='Home'>
         <div className="main">
+        <div className="groupTitle"><h1 className='Gtitle'>{data.category.data.attributes.name}</h1></div>
+     
       <div className="dataList">
       {data.category.data.attributes.products.data.map(prod=>(
         <div className="dataItem">

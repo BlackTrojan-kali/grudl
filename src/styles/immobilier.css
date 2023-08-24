@@ -1,9 +1,9 @@
 .immo{
-  margin: 100px 30px;
+  margin: 100px 30px 30px 5%;
 }
 .houses{
     position: relative;
-    margin: 10px 30px 10px 30px;
+    margin: 10px 30px 10px 10%;
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 10%;

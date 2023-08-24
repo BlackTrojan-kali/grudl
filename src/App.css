@@ -3,6 +3,8 @@ body{
 }
 .App{
     overflow-x: hidden;
+
+
 }
 .Home{
     margin-top: 80px;
@@ -70,11 +72,34 @@ body{
     color: rgb(122, 3, 3);
 }
 .ps-sidebar-root{
-    background-color: rgb(18, 90, 166);
+    background-color: rgba(10, 39, 69, 0.495);
+
+    backdrop-filter: blur(4px);
 }
 .ps-sidebar-root h1{
     font-family: Lobster;
     color: rgb(0, 179, 255);
+}
+/* width */
+::-webkit-scrollbar {
+	width: 6px;
+	background-color: #F5F5F5;
+}
+  
+  /* Track */
+  ::-webkit-scrollbar-thumb {
+	background-color: #000000;
+}
+   
+  /* Handle */
+  ::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb {
+	background-color: #000000;
 }
 @media screen and (max-width: 486px) {
     .cartoff{

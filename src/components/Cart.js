@@ -5,8 +5,8 @@ const Cart = ({cart,cartOn,removeFromCart,Addqty,Lessqty}) => {
         <>
         <div className={cartOn ? "cart":"cartoff"}>
         <div className="cart-header">
-        {cart.length >0 ? <h1>vous avez {cart.length } element(s) dans votre panier</h1>:
-        <h1>votre panier est vide</h1>
+        {cart.length >0 ? <h2>Vous avez {cart.length } element(s) dans votre panier</h2>:
+        <h2>Votre panier est vide</h2>
         }
             <div className="cart-elem">
                <>
@@ -37,7 +37,7 @@ const Cart = ({cart,cartOn,removeFromCart,Addqty,Lessqty}) => {
                 }
 
 <div className="total">
-                                <h1>Total :{cart.reduce((total,item)=>total +(item.prod.attributes.price*item.qty),0)} Fcfa</h1>
+                                <h2>Total :{cart.reduce((total,item)=>total +(item.prod.attributes.price*item.qty),0)} Fcfa</h2>
                             <button className='purchase'>Acheter</button>
                             </div></>
             </div>

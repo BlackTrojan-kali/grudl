@@ -5,7 +5,7 @@
     width: 100%;
     background-color: rgb(1, 13, 29);
     position: fixed;
-    z-index: 1500;
+    z-index: 1000;
     top:0;
     color:white;
     display: flex;
@@ -64,14 +64,26 @@ aside{
 
 }
 /*CART ELEMENT DESIGN*/
+.cart{
+    background-color: rgba(0, 0, 0, 0.781);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+.cartOff{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.781);
+    backdrop-filter: blur(2px);
+}
 .cart-element{
     display: flex;
     gap: 10px;
-    padding: 5px;
+    padding: 10px;
     width: 100%;
+    border-bottom: 1px solid white;
 }
 .cart-element h4{
     margin-top: 5px;
+    font-weight: 200;
     margin-bottom: 5px;
 }
 .cart-images{

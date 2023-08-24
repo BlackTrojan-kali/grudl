@@ -6,6 +6,7 @@ import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import TheFilter from "./TheFilter";
 export default function Side({collapseSidebar}) {
   return (
     <Sidebar style={{ height: "100vh" }}>
@@ -22,10 +23,8 @@ export default function Side({collapseSidebar}) {
             <h1>Grudl</h1>
             
           </MenuItem>
-          <SubMenu icon={<HomeOutlinedIcon />} label="Home">
-            <MenuItem icon={<PeopleOutlinedIcon />}>Item 1</MenuItem>
-            <MenuItem icon={<PeopleOutlinedIcon />}>Item 2</MenuItem>
-            <MenuItem icon={<PeopleOutlinedIcon />}>Item 3</MenuItem>
+          <SubMenu icon={<HomeOutlinedIcon />} label="Categories">
+            <TheFilter/>
       </SubMenu>
           <MenuItem icon={<PeopleOutlinedIcon />}>Team</MenuItem>
           <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>

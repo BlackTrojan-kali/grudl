@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination"; 
+import { useState } from 'react';
 import {AiTwotoneHeart} from "react-icons/ai";
 import {BsCart4} from 'react-icons/bs';
 import {RiTShirt2Line}from 'react-icons/ri'
@@ -44,14 +45,20 @@ query GetProducts{
 `
 const HomePages = ({cart,addToCart,qty}) => {
   const { data, error, loading }= useQuery(PRODUCTS);
-  {console.log(data)}
+  const [more,setMore]= useState(20);
   
-
   if(loading)return <p>fetching data please wait... </p>
   if(error)  return <p className='Home'>error while fetching your data check if the data server is opened</p>
+  
+  const handleMore =()=>{
+    if(more>=data.products.data.length){
+      setMore(data.products.data.length)
+    }else{
+      setMore(more+20);
+    }  
+  }
   return (
     <div className='Home'>
-  <TheFilter/>
 
 
      {console.log(data)}
@@ -82,8 +89,10 @@ const HomePages = ({cart,addToCart,qty}) => {
         ))}
       </Swiper>
       <div className="main">
+
+      <div className="groupTitle"><h1 className='Gtitle'>Tous les produits</h1></div>
       <div className="dataList">
-      {data.products.data.map(prod=>(
+      {data.products.data.slice(0,more).map(prod=>(
         <div className="dataItem">
           <div className="boxData" key={prod.id}>
             <img src={"http://localhost:1337"+prod.attributes.images.data[0].attributes.url} alt="" />
@@ -98,6 +107,9 @@ const HomePages = ({cart,addToCart,qty}) => {
         </div>
       ))}
       </div>
+      { data.products.data.length>=more?
+      <button className='loadMore' onClick={()=>handleMore()}>Load more...</button>:""
+}
       </div>
       </div>
   )
