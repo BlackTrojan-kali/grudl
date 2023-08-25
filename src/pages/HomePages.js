@@ -1,4 +1,5 @@
 
+import '../styles/homepage.css'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from 'react-router-dom';
 import "swiper/css";
@@ -78,7 +79,7 @@ const HomePages = ({cart,addToCart,qty}) => {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        {data.products.data.filter(items=> items.attributes.notation >=4).map(slide=>(
+        {data.products.data.slice(0, 7).map(slide=>(
         <SwiperSlide key={slide.id}>
 
       <Link to={`/ProductDetails/${slide.id}`}>
@@ -92,17 +93,15 @@ const HomePages = ({cart,addToCart,qty}) => {
       <div className="groupTitle"><h1 className='Gtitle'>Tous les produits</h1></div>
       <div className="dataList">
       {data.products.data.slice(0,more).map(prod=>(
-        <div className="dataItem w-full md:w-1/2 lg:w-1/3 p-4">
-          <div className="boxData h-full bg-gray-100 rounded-2xl" key={prod.id}>
-            <img className="w-full rounded-2xl" src={"http://localhost:1337"+prod.attributes.images.data[0].attributes.url} alt="" />
+        <div className="dataItem">
+          <div className="boxData" key={prod.id}>
+            <img src={"http://localhost:1337"+prod.attributes.images.data[0].attributes.url} alt="" />
             <div className="describe">
               <h3>{prod.attributes.title}  <span className='like'>{prod.attributes.notation} <AiTwotoneHeart/></span></h3>
               <p>{prod.attributes.description.slice(0,35)}...</p>
               <h4>{prod.attributes.price} XAF</h4>
-            <div className="actions w-full md:w-1/2 lg:w-1/3 p-4">
              <Link to={`/ProductDetails/${prod.id}`}> <button className='seemore'>Voir</button></Link>
               <button className='addtocart' onClick={()=>addToCart(prod,qty)}>Ajouter au Panier <BsCart4/></button>
-              </div>
             </div>
           </div>
         </div>

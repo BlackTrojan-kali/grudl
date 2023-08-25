@@ -37,16 +37,13 @@
   text-align: justify;
 }
 .addtocart{
-  display: flex;
+  margin-top: 40px;
   border: none;
   background-color: rgb(21, 96, 143);
   color:#fff;
   padding: 10px;
   cursor: pointer;
-}
-.actions{
-  display: flex;
-  gap: 10%;
+  margin-left: 25%;
 }
 .IM img{
   width: 400px;

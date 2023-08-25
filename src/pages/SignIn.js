@@ -10,7 +10,6 @@ import {
     Spin,
     Typography,
   } from "antd";
-  import "tailwindcss/lib"
   import React, { Fragment, useState } from "react";
   import { Link } from "react-router-dom";
   import { useNavigate } from "react-router-dom";
