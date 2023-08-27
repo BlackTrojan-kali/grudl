@@ -1,6 +1,38 @@
 import {BsFillTrashFill} from 'react-icons/bs';
-const Cart = ({cart,cartOn,removeFromCart,Addqty,Lessqty}) => {
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
+import Payer from './Payer';
+import { message } from 'antd';
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    pt: 2,
+    px: 14,
+    pb: 2,
+  };
   
+const Cart = ({cart,cartOn,removeFromCart,Addqty,Lessqty,setCart}) => {
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => {
+        if(cart.length<=0){
+            message.error('votre panier est vide')
+            setOpen(false)
+        }
+        else{
+      setOpen(true);
+        }
+    };
+    const handleClose = () => {
+      setOpen(false);
+    };
     return (
         <>
         <div className={cartOn ? "cart":"cartoff"}>
@@ -38,8 +70,19 @@ const Cart = ({cart,cartOn,removeFromCart,Addqty,Lessqty}) => {
 
 <div className="total">
                                 <h2>Total :{cart.reduce((total,item)=>total +(item.prod.attributes.price*item.qty),0)} Fcfa</h2>
-                            <button className='purchase'>Acheter</button>
-                            </div></>
+                       
+                            <button onClick={handleOpen} className='purchase'>Acheter</button>
+                            <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+        <Box sx={{ ...style, width: 200 }}>
+        <Payer cart={cart} handleClose={handleClose} setCart={setCart}></Payer>
+        </Box>
+      </Modal>
+         </div></>
             </div>
         </div>
     </div>

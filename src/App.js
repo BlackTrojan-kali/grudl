@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
 import { Routes,BrowserRouter, Route } from 'react-router-dom';
@@ -28,13 +27,13 @@ const client = new ApolloClient({
 function App() {
   let [cart,setCart] = useState([]);
   let qty= 1;
-  let couleur='defaut';
+  let couleur = 'defaut';
   const Addqty=(elem)=>{
    
-    let finder = cart.findIndex((obj=>obj.prod.attributes.title ==elem.prod.attributes.title)) 
+    let finder = cart.findIndex((obj=>obj.prod.attributes.title ===elem.prod.attributes.title)) 
     const newstate = cart.map(obj =>{
       console.log(obj)
-      if (obj.prod.attributes.title == elem.prod.attributes.title){
+      if (obj.prod.attributes.title === elem.prod.attributes.title){
           if(obj.qty>=20){
             return {...obj,qty:20}
           }
@@ -46,10 +45,10 @@ function App() {
     setCart(newstate)
   }
   const Lessqty=(elem)=>{
-    let finder = cart.findIndex((obj=>obj.prod.attributes.title ==elem.prod.attributes.title)) 
+    let finder = cart.findIndex((obj=>obj.prod.attributes.title ===elem.prod.attributes.title)) 
     const newstate = cart.map(obj =>{
       console.log(obj)
-      if (obj.prod.attributes.title == elem.prod.attributes.title){
+      if (obj.prod.attributes.title === elem.prod.attributes.title){
           if(obj.qty <=0)
             return {...obj,qty:0}
     
@@ -72,9 +71,9 @@ function App() {
     setCartOn(!cartOn);
   }
   const addToCart= (prod,qty,size,color)=>{
-    if(cart.filter(value =>prod == value.prod).length>0){
+    if(cart.filter(value =>prod === value.prod).length>0){
       message.error('le panier contient deja cet element');
-    }else if(prod.attributes.in_stock == false){
+    }else if(prod.attributes.in_stock === false){
       message.error('le stock est epuise');
     }else{
 
@@ -92,7 +91,7 @@ function App() {
   <BrowserRouter >
     <div className="App">
         <Header cart={cart} handleShow={handleShow}/>
-        <Cart cart={cart} cartOn={cartOn} Addqty={Addqty} Lessqty={Lessqty}  removeFromCart={removeFromCart} />
+        <Cart cart={cart} cartOn={cartOn} Addqty={Addqty} Lessqty={Lessqty}  removeFromCart={removeFromCart} setCart={setCart} />
         <div id="app" style={({ height: "100vh" }, { display: "flex" })}>
       <Side collapseSidebar={collapseSidebar}/>
         <Routes>
@@ -107,6 +106,7 @@ function App() {
           <Route path='/Profile' element={<Profile cart={cart} />}/>
           <Route path='/Billeterie' element={<Billeterie cart={cart} />}/>
           <Route path='/Reserver/:id' element={<Reserver cart={cart} />}/>
+          
         </Routes>
         </div>
         <Footer></Footer>

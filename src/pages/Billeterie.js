@@ -9,7 +9,6 @@ query getAgency{
         id
         attributes{
           name
-          agencyMail
           image{
             data{
               id
@@ -18,8 +17,6 @@ query getAgency{
               }
             }
           }
-          price
-          destination
         }
       }
     }

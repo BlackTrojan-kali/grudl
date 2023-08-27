@@ -1,0 +1,23 @@
+
+
+.infos{
+    width: 100%;
+}
+.champ{
+    margin-top: 10px;
+}
+.champ input,select{
+    width: 95%;
+    border: none;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 3px 2px 10px rgb(105, 105, 105);
+}
+.poursuivre{
+    margin-top:10px ;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}

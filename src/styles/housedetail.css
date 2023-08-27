@@ -1,5 +1,5 @@
 .house-details{
-    margin: 100px 30px;
+    margin: 100px 30px 30px 100px;
 }
 .home-illustration{
     display: flex;
@@ -16,10 +16,6 @@
     margin: 5px;
     font-size: 1.5rem;
     color: rgb(16, 103, 141);
-}
-.home-desc span{
-    margin-left: 30px;
-    font-size: 1.2rem;
 }
 .catalogue{
     margin-top: 10px;

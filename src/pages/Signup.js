@@ -18,15 +18,26 @@ import {
   import { useAuthContext } from "../context/authContex";
   import { API } from "../hooks/constant";
   import { setToken } from "../hooks/helper";
+
  
 const Signup = () => {
-
+  
     const navigate = useNavigate();
     const {setUser}= useAuthContext();
     const [isLoading,setIsLoading]=useState(false);
     const [error,setError]= useState("");
-   const onFinish =(values)=>{
+   const onFinish = async (values)=>{
+
+    setIsLoading(true);
     console.log('received values of form',values);
+    try {
+      const response = await fetch(`${API}/auth/local/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
     const graphqlQuery={
       query:`
       mutation($username:String!, $email:String!, $password:String!){
@@ -47,38 +58,27 @@ const Signup = () => {
         username: values.username
       }
     };
+    const data = await response.json();
+    if (data?.error) {
+      throw data?.error;
+    } else {
+      // set the token
+      setToken(data.jwt);
 
-    fetch('http://localhost:1337/graphql',{
-      method:'POST',
-      headers:{
-      'content-type': 'application/json'
-      },
-      body: JSON.stringify(graphqlQuery)
-    })
-    .then(res=>{
-      return res.json();
-    })
-    .then(resData=>{
-      if(resData.errors && resData.erros[0].status===422){
-        throw new Error(
-          "Validation failed. make sure the username is correct"
-        );
-        message.error('user creation failed')
-      }if(resData.errors){
-        throw new Error(
-          "Validation failed"
-        );
-        message.error('user creation failed')
-      }
-        console.log(resData)
-        throw new Error('userno')
-        
-        message.success('user inserted successfully')
-    })
-    .catch(err=>{
-      console.log(err)
-    })
-   }
+      // set the user
+      setUser(data.user);
+
+      message.success(`Welcome to Social Cards ${data.user.username}!`);
+
+      navigate("/profile", { replace: true });
+    }
+  } catch (error) {
+    console.error(error);
+    setError(error?.message ?? "Something went wrong!");
+  } finally {
+    setIsLoading(false);
+  }
+};
   return (
     <div className="signup">
         <h1>Grudl</h1>

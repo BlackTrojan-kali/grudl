@@ -14,6 +14,9 @@ import { Pagination, Navigation } from "swiper";
 import { useQuery,gql } from '@apollo/client';
 import { EffectCards } from "swiper";
 import Alike from '../components/Alike';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 const PRODUCT = gql`
     query GetProduct($id:ID!){
@@ -65,6 +68,7 @@ const PRODUCT = gql`
 `
 const ProductDetails = ({cart,addToCart,qty,Addqty,Lessqty}) => {
   const {id} = useParams()
+  const [value, setValue] = React.useState();
 const [size,setSize]= useState();
 const [color,setColor]= useState()
   const {loading,error,data}= useQuery(PRODUCT,{variables:{id:id}})
@@ -92,7 +96,8 @@ const [color,setColor]= useState()
         </div>
         <div className="desc-prod">
           <h2>{prod.title}</h2>
-         <h3>{prod.notation} <AiTwotoneHeart/></h3>
+          <Typography component="legend">Appreciations</Typography>
+      <Rating name="read-only" value={prod.notation} readOnly />
           <p>{prod.description}</p>
           {prod.in_stock? 
           <span className='instock'>

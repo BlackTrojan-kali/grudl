@@ -23,9 +23,6 @@ query getAgency($id:ID!){
       attributes{
         name
         agencyMail
-        price
-        constantVip
-        allerSimple
         }
       }
     }

@@ -3,6 +3,10 @@ import '../styles/housedetail.css'
 import {AiTwotoneHeart} from 'react-icons/ai'
 import { useParams } from 'react-router-dom'
 import HouseImg from '../components/HouseImg'
+import { useState } from 'react'
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 const HOUSE = gql`
 query GetHouse($id:ID!){
   house(id:$id){
@@ -32,6 +36,8 @@ query GetHouse($id:ID!){
 `
 const HouseDetail = () => {
   const {id} = useParams();
+
+  const [value, setValue] = useState();
   const {error,loading,data} = useQuery(HOUSE,{
     variables:{id:id}
   })
@@ -46,7 +52,9 @@ const HouseDetail = () => {
         </div>
         <div className="home-desc">
           <h1>{home.name}</h1>
-          <h3>{home.notation} <AiTwotoneHeart/></h3>
+          
+          <Typography component="legend">Appreciations</Typography>
+         <Rating name="read-only" value={home.notation} readOnly />
           <p>{home.description}</p>
           <h3>{home.price} fcfa</h3>
           {console.log(home.status)}
