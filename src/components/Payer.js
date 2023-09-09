@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/authContex";
 import { URI } from "../hooks/constant";
 import {
@@ -44,6 +44,8 @@ const [total,setTotal] = useState(cart.reduce((total,item)=>total +(item.prod.at
 const [isLoading,setIsLoading]=useState(false);
 const [error,setError]= useState("");
 const navigate = useNavigate();
+const {user} = useAuthContext();
+console.log(user);
 const initialRender = useInitialRender();
 const onFinish = async (values)=>{
   setIsLoading(true);
@@ -68,8 +70,8 @@ const onFinish = async (values)=>{
       }
     `,
     variables: {
-      acheteur:values.acheteur,
-      email:values.email,
+      acheteur:user.username,
+      email:user.email,
       numero:values.numero,
       address:values.address,
       ville:values.ville,
@@ -121,12 +123,12 @@ try {
                     name="acheteur"
                     rules={[
                       {
-                        required: true,
+                        required: false,
                         type: "string",
                       },
                     ]}
                   >
-                    <Input placeholder="votre Nom" />
+                    <Input placeholder={user.username} value={user.username} disabled/>
                   </Form.Item>
         </div>
         <div className="champ">
@@ -162,7 +164,7 @@ try {
                   </Form.Item>
         </div>
 
-        <div className="champ">
+        <div className="champ mr-6">
          
         <Form.Item
                     label="Numero"
@@ -174,32 +176,32 @@ try {
                       },
                     ]}
                   >
-                    <InputNumber  />
+                    <InputNumber  style={{ width: 200 }} />
                   </Form.Item>
-        </div> <div className="champ">
+        </div> 
+        <div className="champ">
          
         <Form.Item
                     label="email"
                     name="email"
                     rules={[
                       {
-                        required: true,
+                        required: false,
                         type: "string",
                       },
                     ]}
                   >
-                    <Input placeholder="Votre Email" />
+                    <Input  placeholder={user.email} value={user.email} disabled />
                   </Form.Item>
         </div>
 
-        <Button
+                 <Button
                       type="primary"
                       htmlType="submit"
                       className="poursuivre"
                     >
                       Submit {isLoading && <Spin size="small" />}
                     </Button>
-
       </div>
       <div>
       </div>

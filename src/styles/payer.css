@@ -6,8 +6,8 @@
 .champ{
     margin-top: 10px;
 }
-.champ input,select{
-    width: 95%;
+.champ input{
+    width: 100%;
     border: none;
     height: 40px;
     border-radius: 5px;

@@ -1,11 +1,13 @@
 import {BsFillTrashFill} from 'react-icons/bs';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Payer from './Payer';
 import { message } from 'antd';
+import { useAuthContext } from '../context/authContex';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -21,10 +23,16 @@ const style = {
   
 const Cart = ({cart,cartOn,removeFromCart,Addqty,Lessqty,setCart}) => {
     const [open, setOpen] = useState(false);
+    const {user} = useAuthContext();
+    const navigate = useNavigate();
+    console.log(user);
     const handleOpen = () => {
         if(cart.length<=0){
             message.error('votre panier est vide')
             setOpen(false)
+        }else if(!user){
+          message.error('you are not logged in');
+          navigate('/Signin',{replace:true})
         }
         else{
       setOpen(true);

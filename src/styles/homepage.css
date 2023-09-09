@@ -159,16 +159,44 @@
   .productdesc .like{
     margin-left: 0;
   }
-  @media screen and (max-width:800px) {
+  @media only screen and (max-width:1100px) {
     .dataList{
-      display: block;
+      display: grid;
+      grid-template-columns: auto auto;
     }
     .boxData{
+      margin-top: 10px;
       overflow: hidden;
       width: 280px;
-      height: 520px;
+      height: 420px;
       border-radius: 12px;
-      transition:all 0.30s linear
+      transition:all 0.30s linear;
+      font-size: 10px;
+  }
+  .boxData button{
+    font-size: 10px;
+  }
+
+    .cart{
+      width: 100vw;
+      text-align: center;
+      padding-left: 100px;
+    }
+  }
+
+  @media only screen and (max-width:640px) {
+    .dataList{
+      display: flex;
+      flex-direction: column;
+    }
+    .boxData{
+      margin-top: 10px;
+      overflow: hidden;
+      width: 280px;
+      height: 420px;
+      border-radius: 12px;
+      transition:all 0.30s linear;
+      font-size: 10px;
   }
   
   }

@@ -1,6 +1,9 @@
 import { gql, useQuery } from "@apollo/client"
 import { useParams } from "react-router-dom"
+import { useState } from "react";
 import '../styles/billeterie.css'
+import '../styles/billet.css'
+import { Link } from "react-router-dom";
 import {
   Alert,
   Button,
@@ -22,7 +25,18 @@ query getAgency($id:ID!){
       id
       attributes{
         name
-        agencyMail
+        AgencyMail
+        reservations{
+          data{
+            id
+          attributes{
+            Destination
+            price
+            VIP
+            depart
+          }
+          }
+        }
         }
       }
     }
@@ -30,64 +44,27 @@ query getAgency($id:ID!){
 `
 
 const Reserver = () => {
-  const {id} = useParams()
-  const {data,error,loading}= useQuery(AGENCY, {variables:{id:id}})
-  if (loading) return <p>loaging...</p>
-  const agency = data.agency.data.attributes
+  const {id} = useParams();
+  const { data, error, loading }= useQuery(AGENCY,{variables:{id:id}});
+  if(loading)return <p>fetching data please wait... </p>
+  if(error)  return <p className='Home'>error while fetching your data check if the data server is opened</p>
+  const tickets = data.agency.data.attributes.reservations.data;
+
   return (
-    <div className="billetery">
-      <h1>{agency.name}</h1>
-      <Form
-      name="basic"
-      layout="vertical"
-      autoComplete="on"
-     >
-      <Form.Item
-      label="nom"
-    name="reserverName"
-
-      >
-        <Input type="text"></Input>
-      </Form.Item>
-      <Form.Item
-      label="numero"
-    name="reserverName"
-
-      >
-        <Input type="text"></Input>
-      </Form.Item>
-        <Form.Item
-        label="destination"
-        name="agency"
-        ><Select
-        title="desctination">
-          <option value="Yaounde-Douala">Yaounde-Douala</option>
-          <option value="Douala-Yaounde">Douala-Yaounde</option>
-        </Select>
-        </Form.Item>
-        <Form.Item
-        label="data"
-        name="date"
-        >
-        <Input type="date"></Input>
-        </Form.Item>
-        <Form.Item
-        label="Heure"
-        name="heure"
-        >
-        <Input type="time"></Input>
-        </Form.Item>
-        <Form.Item
-        label="VIP"
-        name="statut"
-        >
-      <Input type="checkbox" name="statut" value={true}/>
-        
-        </Form.Item>
-
-        <Button type="primary"  htmlType="reset">Reset</Button>
-
-        <Button type="primary" htmlType="submit">Submit</Button>      </Form>
+    <div className="billets">
+        {tickets.map(ticket=>(
+         <Link to={`/Buy/${ticket.id}`}>
+         <div className="ticketBox" key={ticket.id}>
+            <img src="" alt="" />
+            <div className="ticketDesc">
+              <h1>{ticket.attributes.Destination}</h1>
+              <h3>{ticket.attributes.price} XAF</h3>
+              <h3>{ticket.attributes.depart}</h3>
+              <h3>{ticket.attributes.VIP? "VIP":"Standard"}</h3>
+            </div>
+          </div>
+        </Link>
+        ))}
     </div>
   )
 }

@@ -9,7 +9,6 @@ import { getToken } from "../../hooks/helper";
 const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState();
   const [isLoading, setIsLoading] = useState(false);
-
   const authToken = getToken();
 
   const fetchLoggedInUser = async (token) => {
@@ -32,7 +31,6 @@ const AuthProvider = ({ children }) => {
   const handleUser = (user) => {
     setUserData(user);
   };
-
   useEffect(() => {
     if (authToken) {
       fetchLoggedInUser(authToken);

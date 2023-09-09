@@ -20,6 +20,8 @@ import {message} from "antd"
 import Billeterie from './pages/Billeterie';
 import Reserver from './pages/Reserver';
 import Side from './components/Side';
+import Buy from './pages/Buy';
+import Checkout from './pages/Checkout';
 const client = new ApolloClient({
   uri: 'http://localhost:1337/graphql',
   cache: new InMemoryCache()
@@ -87,7 +89,7 @@ function App() {
   return (
 
     <ApolloProvider client={client}>
-      
+    
   <BrowserRouter >
     <div className="App">
         <Header cart={cart} handleShow={handleShow}/>
@@ -106,7 +108,8 @@ function App() {
           <Route path='/Profile' element={<Profile cart={cart} />}/>
           <Route path='/Billeterie' element={<Billeterie cart={cart} />}/>
           <Route path='/Reserver/:id' element={<Reserver cart={cart} />}/>
-          
+          <Route path='/Buy/:id' element={<Buy cart={cart} />}/>
+          <Route path='/Checkout' element={<Checkout/>}/>
         </Routes>
         </div>
         <Footer></Footer>
