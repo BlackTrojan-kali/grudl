@@ -2,6 +2,8 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/authContex";
 import { URI } from "../hooks/constant";
+import { Secret,APPKey,AccesKey } from "../hooks/constant";
+import {PaymentOperation, RandomGenerator} from '@hachther/mesomb-browser';
 import {
   Alert,
   Button,
@@ -49,6 +51,21 @@ console.log(user);
 const initialRender = useInitialRender();
 const onFinish = async (values)=>{
   setIsLoading(true);
+ 
+  const payment = new PaymentOperation({applicationKey: APPKey, accessKey: AccesKey, secretKey: Secret,});
+const res = await payment.makeCollect({amount: 100, service: 'MTN', payer: '400001019', nonce: RandomGenerator.nonce(),currency: "XAF", fees:true, country: "CM",
+location:{
+  town:values.ville
+},
+customer:{
+  firstname:user.username,
+  email:user.email
+}
+});
+message.loading('validating payment');
+console.log(res.isOperationSuccess());
+console.log(res.isTransactionSuccess());
+ 
   console.log('received values of form',values);
   const graphqlQuery={
     query:`
@@ -94,7 +111,7 @@ try {
   } else {
     // set the token
 
-    message.loading('validating payment');
+    message.success('paiement effectue avec success');
     handleClose()
 }
 }catch (error) {
