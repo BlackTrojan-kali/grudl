@@ -136,21 +136,6 @@ try {
         <div className="champ">
         
         <Form.Item
-                    label="acheteur"
-                    name="acheteur"
-                    rules={[
-                      {
-                        required: false,
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input placeholder={user.username} value={user.username} disabled/>
-                  </Form.Item>
-        </div>
-        <div className="champ">
-        
-        <Form.Item
                     label="Adresse"
                     name="address"
                     rules={[
@@ -196,21 +181,6 @@ try {
                     <InputNumber  style={{ width: 200 }} />
                   </Form.Item>
         </div> 
-        <div className="champ">
-         
-        <Form.Item
-                    label="email"
-                    name="email"
-                    rules={[
-                      {
-                        required: false,
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input  placeholder={user.email} value={user.email} disabled />
-                  </Form.Item>
-        </div>
 
                  <Button
                       type="primary"

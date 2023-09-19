@@ -19,6 +19,7 @@ import {CgSmartphoneChip} from 'react-icons/cg'
 import {SiJirasoftware} from 'react-icons/si'
 import TheFilter from '../components/TheFilter';
 import Side from '../components/Side';
+import { URI } from "../hooks/constant";
 const PRODUCTS = gql`
 query GetProducts{
   products(sort:"description"){
@@ -83,19 +84,22 @@ const HomePages = ({cart,addToCart,qty}) => {
         <SwiperSlide key={slide.id}>
 
       <Link to={`/ProductDetails/${slide.id}`}>
-            <img src={"http://localhost:1337"+slide.attributes.images.data[0].attributes.url} alt="" />
+            <img src={`${URI}`+slide.attributes.images.data[0].attributes.url} alt="" />
       </Link>
         </SwiperSlide>
         ))}
       </Swiper>
       <div className="main">
+        <div className="banner">
+          <img src="grudl.jpg" alt=""  />
+        </div>
 
       <div className="groupTitle"><h1 className='Gtitle'>Tous les produits</h1></div>
       <div className="dataList">
       {data.products.data.slice(0,more).map(prod=>(
         <div className="dataItem">
           <div className="boxData" key={prod.id}>
-            <img src={"http://localhost:1337"+prod.attributes.images.data[0].attributes.url} alt="" />
+            <img src={`${URI}`+prod.attributes.images.data[0].attributes.url} alt="" />
             <div className="describe">
               <h3>{prod.attributes.title}  <span className='like'>{prod.attributes.notation} <AiTwotoneHeart/></span></h3>
               <p>{prod.attributes.description.slice(0,35)}...</p>
@@ -110,6 +114,10 @@ const HomePages = ({cart,addToCart,qty}) => {
       { data.products.data.length>=more?
       <button className='loadMore' onClick={()=>handleMore()}>Load more...</button>:""
 }
+
+<div className="banner">
+          <img src="grudlflyer.jpg" alt=""  />
+        </div>
       </div>
       </div>
   )

@@ -7,10 +7,8 @@ export default function Footer() {
     <div className='footer'>
       <div className="patenaires">
         <ul>
-          <li>Partenaire1</li>
-          <li>Partenaire2</li>
-          <li>Partenaire3</li>
-          <li>Partenaire4</li>
+          <li>3hcigcoopca</li>
+          <li>minpmeesa</li>
         </ul>
       </div>
       <div className="logo">
@@ -26,11 +24,7 @@ export default function Footer() {
       </div>
       <div className="useful-links">
 <ul>
-  <li>THIS IS A LINK</li>
-  <li>THIS IS A LINK</li>
-  <li>THIS IS A LINK</li>
-  <li>THIS IS A LINK</li>
-  <li>THIS IS A LINK</li>
+  <li>650105100</li>
 </ul>
       </div>
     </div>

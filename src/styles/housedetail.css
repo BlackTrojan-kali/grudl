@@ -1,9 +1,9 @@
 .house-details{
-    margin: 100px 30px 30px 100px;
+    margin: 100px 30px 30px 150px;
 }
 .home-illustration{
     display: flex;
-    gap: 30px;
+    gap: 10%;
 }
 .home-single-image img{
     width: 500px;
@@ -11,6 +11,9 @@
 .home-desc h1{
     font-family: Dancing Script;
     color: rgb(16, 103, 141);
+}
+.desc-prod{
+    width: 400px;
 }
 .home-desc h4{
     margin: 5px;

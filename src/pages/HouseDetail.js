@@ -7,6 +7,7 @@ import { useState } from 'react'
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
+import { URI } from "../hooks/constant";
 const HOUSE = gql`
 query GetHouse($id:ID!){
   house(id:$id){
@@ -48,7 +49,7 @@ const HouseDetail = () => {
     <div className='house-details'>
       <div className="home-illustration">
         <div className="home-single-image">
-          <img src={"http://localhost:1337"+home.images.data[0].attributes.url} alt="" />
+          <img src={`${URI}`+home.images.data[0].attributes.url} alt="" />
         </div>
         <div className="home-desc">
           <h1>{home.name}</h1>
@@ -74,7 +75,7 @@ const HouseDetail = () => {
         {
             home.images.data.map(image=>(
               <div className="element" key={image.id}>
-                <img src={"http://localhost:1337"+image.attributes.url} alt="" />
+                <img src={`${URI}`+image.attributes.url} alt="" />
               </div>
             ))
           }

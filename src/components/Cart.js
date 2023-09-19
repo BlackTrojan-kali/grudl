@@ -9,16 +9,19 @@ import Payer from './Payer';
 import { message } from 'antd';
 import { useAuthContext } from '../context/authContex';
 const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
+    position:"relative",
+    Overflow:'scroll',
+    top: '35%',
+    left: '40%',
     transform: 'translate(-50%, -50%)',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    pt: 2,
-    px: 14,
-    pb: 2,
+    px:10,
+    pt:10,
+    ps:2,
+
+    
   };
   
 const Cart = ({cart,cartOn,removeFromCart,Addqty,Lessqty,setCart}) => {

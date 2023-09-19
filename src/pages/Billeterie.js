@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../styles/billeterie.css'
 import { gql,useQuery } from '@apollo/client'
-
+import { URI } from "../hooks/constant";
 const AGENCIES = gql`
 query getAgency{
     agencies{
@@ -32,7 +32,7 @@ const Billeterie = () => {
         {agencies.map(agency=>(
             <Link to={`/Reserver/${agency.id}`}>
             <div className="agency">
-                  <img src= {"http://localhost:1337"+agency.attributes.image.data[0].attributes.url} alt="" />
+                  <img src= {`${URI}`+agency.attributes.image.data[0].attributes.url} alt="" />
                   <h1>{agency.attributes.name}</h1> 
             </div>
             </Link>

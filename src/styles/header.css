@@ -68,6 +68,7 @@ aside{
     background-color: rgba(0, 0, 0, 0.781);
     color: white;
     backdrop-filter: blur(10px);
+
 }
 .cartOff{
     color: white;
@@ -105,6 +106,9 @@ aside{
 
 /**/
 @media screen and (max-width:1052px){
+    .cart{
+        width: 80vw!important;
+    }
     .navbar{
         z-index: 999;
         display: block;
